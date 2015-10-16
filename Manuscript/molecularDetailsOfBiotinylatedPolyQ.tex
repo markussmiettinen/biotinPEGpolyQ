@@ -21,18 +21,24 @@
 
 % Select what to do with command \comment:  
 % \newcommand{\comment}[1]{}  %comment not showed
-\newcommand{\comment}[1]
-{\todo[color=green!40]{\sffamily #1}} %comment showed
+\newcommand{\comment}[3][]
+{\todo[color=green!40,#1]{{\sffamily #3:} #2}} %comment showed
+
+% Select what to do with command \task:  
+% \newcommand{\task}[1]{}  %task not showed
+\newcommand{\task}[3][]
+{\todo[color=orange!60,#1]{{\sffamily #3:} #2}} %task showed
+
 
 % Select what to do with command \reference:  
 % \newcommand{\reference}[1]{}  %reference not showed
-\newcommand{\reference}[1]
-{\todo[color=blue!40]{\sffamily #1}} %reference showed
+\newcommand{\reference}[3][]
+{\todo[color=blue!40,#1]{{\sffamily #3:} #2}} %reference showed
 
 % Select what to do with command \wrong:  
 % \newcommand{\wrong}[1]{}  %wrong not showed
-\newcommand{\wrong}[1]
-{\todo[color=red!70]{\sffamily #1}} %wrong showed
+\newcommand{\wrong}[3][]
+{\todo[color=red!70,#1]{{\sffamily #3:} #2}} %wrong showed
 
 
 \hyphenation{poly-glu-ta-mine} % Specifies custom hyphenation points for words or words that shouldn't be hyphenated at all
@@ -91,10 +97,13 @@ otherwise, the author names are alphabetically ordered with M.~S.~Miettinen as t
 * This manuscript describes the current status of the project.
 %
 We use four kinds of comments to point out issues:
-1) general comments \comment{\textbackslash comment} (green),
-2) todo items \todo{\textbackslash todo} (orange),
-3) asking references to be added \reference{\textbackslash reference} (blue), and
-4) pointing out mistakes \wrong{\textbackslash wrong} (red).
+1) general comments \comment{I think\ldots}{Name} (green),
+% Usage:
+%   \comment{Your comment}{Name}         ---> displays 'Name: Your comment' on the margin
+%   \comment[inline]{Your comment}{Name} ---> displays 'Name: Your comment' within the text
+2) todo items \task{Do this!}{Name} (orange),
+3) asking references to be added \reference{Add ref!}{Name} (blue), and
+4) pointing out mistakes \wrong{Wrong!}{Name} (red).
 %
 The list of open issues is in the end of the manuscript.
 }
@@ -238,10 +247,10 @@ pocket of streptavidin.
 
 \subsubsection*{Building the all-atom model}
 
-\todo[inline]
-{{\bf Aniruddha},
+\task[inline]
+{{\bf @Aniruddha},
 start writing here a description on how you are
-building the fibril.}
+building the fibril.}{Markus}
 
 All-atom explicit water simulations
 with three different setups will be run:
@@ -264,15 +273,15 @@ the powerful modern tools for creating force fields for small molecules,
 such as CGenFF~\cite{Vanommeslaeghe:2012a}, to create a CHARMM36-compatible
 biotin-PEG from scratch, will possibly lead to a more reliable result.
 
-\comment{\textbackslash We have recently successfully used a PEG model based 
+\comment[inline]{We have recently successfully used a PEG model based 
 on work modification by Shang et al. [J. Phys. Chem. B 2008, 112,
 2888−2900] to the GROMOS 45a3, see dx.doi.org/10.1021/la404684r.
 The model works (surprisingly) well reproducing even anoumalous
 temperature dependence (increasing of order parameters with increasing
 temperature, see Fig. 5.). This may be useful if you find compatible models
-for other molecules.} 
+for other molecules.}{Samuli}
 
-\todo[inline]{
+\task[inline]{
 {\bf Scaling plots (DL: Oct 25th).}
 To apply for computing resources we need to run scaling tests.
 For this we need a system that is as close to the actual system we will work on as possible.
@@ -281,7 +290,7 @@ To this end we must:
 {\bf (1)} estimate the size of the fibril (number of Qs, number of waters) we need to simulate,
 {\bf (2)} build a system of this size (does not need to be a fibril),
 {\bf (3)} simulate with varying number of cores.
-}
+}{Markus}
 
 
 
@@ -317,12 +326,12 @@ to study the biotin--streptavidin interaction.)
 
 \section{Discussion}
 
-\todo[inline]{
+\task[inline]{
 Should probably {\bf discuss the recent paper by de Pablo~\cite{Fluitt:2015a}},
 where they show how (badly) current MD FFs describe polyQ in solution.
 Not a crucial problem for us here (which we should point out), as our polyQ is in the fibril,
 but a worthwhile work nonetheless.
-}
+}{Markus}
 
 %------------------------------------------------
 %\pagebreak
